@@ -3,6 +3,9 @@ package com.example.todo.Service;
 import com.example.todo.Model.Todo;
 import com.example.todo.Repository.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,8 +30,9 @@ public class ToDoService {
 
         }
 
-        public List<Todo> findToDo(){
-            return toDoRepository.findAll();
+        public Page<Todo> findToDo(int page,int size){
+            Pageable pageable = PageRequest.of(page,size);
+            return toDoRepository.findAll(pageable);
 
          }
 

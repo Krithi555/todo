@@ -2,7 +2,9 @@ package com.example.todo.Controller;
 
 import com.example.todo.Model.Todo;
 import com.example.todo.Service.ToDoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +24,7 @@ public class toDoController {
       }
 
       @PostMapping
-      public Todo createToDoApplication(@RequestBody Todo todo){
+      public Todo createToDoApplication(@Valid  @RequestBody Todo todo){
           return toDoService.createToDo(todo);
 
       }
@@ -34,8 +36,8 @@ public class toDoController {
       }
 
       @GetMapping
-      public List<Todo> findToDo(){
-         return toDoService.findToDo();
+      public Page<Todo> findToDo(@RequestParam int page,@RequestParam int size){
+         return toDoService.findToDo(page,size);
 
       }
 
