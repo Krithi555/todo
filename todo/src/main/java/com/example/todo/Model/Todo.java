@@ -5,9 +5,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+
 public class Todo {
 
     @GeneratedValue
@@ -20,23 +27,5 @@ public class Todo {
 
     private boolean isCompleted;
 
-    public String getTitle() {
-        return title;
-    }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public boolean isCompleted() {
-        return isCompleted;
-    }
-
-    public void setCompleted(boolean completed) {
-        isCompleted = completed;
-    }
-
-    public Long getId() {
-        return id;
-    }
 }

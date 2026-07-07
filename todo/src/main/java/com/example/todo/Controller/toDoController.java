@@ -3,13 +3,14 @@ package com.example.todo.Controller;
 import com.example.todo.Model.Todo;
 import com.example.todo.Service.ToDoService;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+@Slf4j
 @RestController
 @RequestMapping("/todos")
 public class toDoController {
@@ -32,6 +33,7 @@ public class toDoController {
       @DeleteMapping("/{id}")
       public String deleteToDo(@PathVariable Long id){
           toDoService.deleteToDoById(id);
+          log.info("Todo deleted successfully");;
           return "Todo deleted successfully";
       }
 
